@@ -1,0 +1,110 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Android on emulator-5554",
+            "type": "dart",
+            "request": "launch",
+            "program": "lib/main.dart",
+            "console": "debugConsole",
+            "flutterMode": "debug",
+            "args": [
+                "-d",
+                "emulator-5554"
+            ]
+        },
+        {
+            "name": "Android on emulator-5556",
+            "type": "dart",
+            "request": "launch",
+            "program": "lib/main.dart",
+            "console": "debugConsole",
+            "flutterMode": "debug",
+            "args": [
+                "-d",
+                "emulator-5556"
+            ]
+        },
+        {
+            "name": "Android on emulator-5558",
+            "type": "dart",
+            "request": "launch",
+            "program": "lib/main.dart",
+            "console": "debugConsole",
+            "flutterMode": "debug",
+            "args": [
+                "-d",
+                "emulator-5558"
+            ]
+        },
+        {
+            "name": "Android on Redmi Note 9 Pro Max",
+            "type": "dart",
+            "request": "launch",
+            "program": "lib/main.dart",
+            "console": "debugConsole",
+            "flutterMode": "debug",
+            "args": [
+                "-d",
+                "Redmi Note 9 Pro Max"
+            ]
+        },
+        {
+            "name": "Android on Redmi Note 4",
+            "type": "dart",
+            "request": "launch",
+            "program": "lib/main.dart",
+            "console": "debugConsole",
+            "flutterMode": "debug",
+            "args": [
+                "-d",
+                "Redmi Note 4"
+            ]
+        },
+        {
+            "name": "Yogesh’s iPhone",
+            "type": "dart",
+            "request": "launch",
+            "program": "lib/main.dart",
+            "console": "debugConsole",
+            "flutterMode": "debug",
+            "args": [
+                "-d",
+                "Yogesh’s iPhone"
+            ]
+        },
+        {
+            "name": "Web on Chrome",
+            "type": "dart",
+            "request": "launch",
+            "program": "lib/main.dart",
+            "console": "debugConsole",
+            "flutterMode": "debug",
+            "args": [
+                "-d",
+                "Chrome",
+                "--web-renderer",
+                "canvaskit",
+                "--web-port",
+                "51234"
+            ]
+        },
+        {
+            "name": "Web on Edge",
+            "type": "dart",
+            "request": "launch",
+            "program": "lib/main.dart",
+            "console": "debugConsole",
+            "flutterMode": "release",
+            "args": [
+                "-d",
+                "Edge",
+                "--web-renderer",
+                "canvaskit"
+            ]
+        }
+    ]
+}

@@ -1,0 +1,37 @@
+import 'package:flutter/material.dart';
+
+class CustomStyledBox extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Stack(
+      children: [
+        Positioned(
+          top: 5, // Corresponds to 'top: 5px;'
+          left: 0, // Corresponds to 'left: 0px;'
+          child: Opacity(
+            opacity: 1.0, // Corresponds to 'opacity: 1;'
+            child: Container(
+              width: 360.0, // Corresponds to 'width: 360px;'
+              height: 67.0, // Corresponds to 'height: 67px;'
+              decoration: BoxDecoration(
+                color: Color(0xFFFFFFFF), // Corresponds to 'background: #FFFFFF'
+                boxShadow: [
+                  BoxShadow(
+                    color: Color(0x29000000), // Corresponds to '#00000029'
+                    blurRadius: 6.0, // Corresponds to '6px' blur radius
+                    offset: Offset(0, 3), // Matches '0px 3px'
+                  ),
+                ],
+                borderRadius: BorderRadius.only(
+                  bottomLeft: Radius.circular(12), // Corresponds to '12px' bottom left radius
+                  bottomRight: Radius.circular(12), // Corresponds to '12px' bottom right radius
+                ),
+              ),
+              // Add child widgets here
+            ),
+          ),
+        ),
+      ],
+    );
+  }
+}
