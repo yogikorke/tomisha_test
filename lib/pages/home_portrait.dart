@@ -1,4 +1,6 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:tomisha_test/values/app_assets.dart';
@@ -77,9 +79,9 @@ class _HomePageState extends State<HomePage> {
             Container(
               margin: EdgeInsets.zero,
               padding: EdgeInsets.zero,
-              height: MediaQuery.sizeOf(context).height,
+              height: MediaQuery.sizeOf(context).height * 0.80,
               color: Colors.white,
-              child: ListView(
+              child: Column(
                 children: [
                   Container(
                     color: const Color(0xffE6FFFA),
@@ -106,10 +108,104 @@ class _HomePageState extends State<HomePage> {
                   ClipPath(
                     clipper: CustomClipPath(),
                     child: Container(
-                      height: MediaQuery.sizeOf(context).height * 0.30,
+                      height: MediaQuery.sizeOf(context).height * 0.10,
                       color: const Color(0xffE6FFFA),
                     ),
                   )
+                ],
+              ),
+            ),
+            DefaultTabController(
+              length: 3,
+              child: Column(
+                children: [
+                  TabBar(
+                    labelColor: const Color(0xff319795),
+                    indicatorColor: const Color(0xff319795),
+                    unselectedLabelColor: const Color(0xff707070),
+                    labelStyle: GoogleFonts.lato(
+                      textStyle: const TextStyle(
+                        fontSize: 14,
+                        fontWeight: FontWeight.w600,
+                      ),
+                    ),
+                    tabs: const [
+                      Tab(text: "Arbeitnehmer"),
+                      Tab(text: "Arbeitgeber"),
+                      Tab(text: "Temporärbüro"),
+                    ],
+                  ),
+                  SizedBox(
+                    height: MediaQuery.of(context).size.height,
+                    child: TabBarView(
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.only(top: 32.0),
+                          child: Stack(
+                            children: [
+                              Positioned(
+                                left: 0,
+                                right: 0,
+                                child: Text(
+                                  "Drei einfache Schritte \nzu deinem neuen Job",
+                                  textAlign: TextAlign.center,
+                                  style: GoogleFonts.lato(
+                                    textStyle: const TextStyle(
+                                      fontSize: 21,
+                                      color: Color(0xff4A5568),
+                                      fontWeight: FontWeight.w500,
+                                    ),
+                                  ),
+                                ),
+                              ),
+                              Positioned(
+                                left: 0,
+                                right: 0,
+                                top: 64,
+                                child: SvgPicture.asset(
+                                  AppAssets.undraw_Profile_data_re_v81r,
+                                ),
+                              ),
+                              Positioned(
+                                left: 8,
+                                top: 128,
+                                child: Text(
+                                  "1. ",
+                                  style: GoogleFonts.lato(
+                                    textStyle: const TextStyle(
+                                      fontSize: 130,
+                                      color: Color(0xff718096),
+                                      fontWeight: FontWeight.w500,
+                                    ),
+                                  ),
+                                ),
+                              ),
+                              Positioned(
+                                right: 64,
+                                top: 256,
+                                child: Text(
+                                  "Erstellen dein Lebenslauf",
+                                  style: GoogleFonts.lato(
+                                    textStyle: const TextStyle(
+                                      fontSize: 15.75,
+                                      color: Color(0xff4A5568),
+                                      fontWeight: FontWeight.w400,
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                        const Text(
+                          "Drei einfache Schritte zu deinem neuen Job",
+                        ),
+                        const Text(
+                          "Drei einfache Schritte zu deinem neuen Job",
+                        )
+                      ],
+                    ),
+                  ),
                 ],
               ),
             ),
