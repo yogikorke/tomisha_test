@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:tomisha_test/utils/ui_utils.dart';
@@ -24,8 +23,9 @@ class _HomePageLandscapeState extends State<HomePageLandscape> {
     return SafeArea(
       child: Scaffold(
         appBar: PreferredSize(
-          preferredSize: const Size.fromHeight(64),
+          preferredSize: const Size.fromHeight(68),
           child: Column(
+            mainAxisSize: MainAxisSize.max,
             children: [
               const Divider(
                 indent: 0,
@@ -35,6 +35,7 @@ class _HomePageLandscapeState extends State<HomePageLandscape> {
                 color: Color(0xff319795),
               ),
               Container(
+                height: 50,
                 margin: EdgeInsets.zero,
                 padding: EdgeInsets.zero,
                 alignment: Alignment.centerRight,
@@ -57,6 +58,9 @@ class _HomePageLandscapeState extends State<HomePageLandscape> {
                 ),
                 child: TextButton(
                   onPressed: () => {},
+                  style: TextButton.styleFrom(
+                    padding: const EdgeInsets.only(right: 16),
+                  ),
                   child: Text(
                     "Login",
                     textAlign: TextAlign.right,
@@ -64,9 +68,7 @@ class _HomePageLandscapeState extends State<HomePageLandscape> {
                       textStyle: const TextStyle(
                         fontSize: 14,
                         fontWeight: FontWeight.w600,
-                        color: Color(
-                          0xff319795,
-                        ),
+                        color: Color(0xff319795),
                       ),
                     ),
                   ),
@@ -86,6 +88,7 @@ class _HomePageLandscapeState extends State<HomePageLandscape> {
               child: Column(
                 children: [
                   Container(
+                    height: uiUtils.getHeight() * 0.30,
                     color: const Color(0xffE6FFFA),
                     child: Row(
                       mainAxisSize: MainAxisSize.max,
@@ -156,8 +159,8 @@ class _HomePageLandscapeState extends State<HomePageLandscape> {
                           child: Container(
                             color: Colors.white,
                             child: SvgPicture.asset(
-                              width: uiUtils.getHeight() * 0.30,
-                              height: uiUtils.getHeight() * 0.30,
+                              width: uiUtils.getHeight() * 0.25,
+                              height: uiUtils.getHeight() * 0.25,
                               AppAssets.undrawAgreementAajr,
                             ),
                           ),
@@ -287,40 +290,6 @@ class TabWidget extends StatelessWidget {
               ),
             ),
           ),
-          // Positioned(
-          //   left: 0,
-          //   right: 0,
-          //   top: uiUtils.getHeight() * 0.15,
-          //   child: SvgPicture.asset(assetOne),
-          // ),
-          // Positioned(
-          //   left: uiUtils.getWidth() * 0.16,
-          //   right: 0,
-          //   top: uiUtils.getHeight() * 0.18,
-          //   child: RichText(
-          //     text: TextSpan(
-          //         text: "1. ",
-          //         style: GoogleFonts.lato(
-          //           textStyle: const TextStyle(
-          //             fontSize: 80,
-          //             color: Color(0xff718096),
-          //             fontWeight: FontWeight.w500,
-          //           ),
-          //         ),
-          //         children: <TextSpan>[
-          //           TextSpan(
-          //             text: textOne,
-          //             style: GoogleFonts.lato(
-          //               textStyle: const TextStyle(
-          //                 fontSize: 18,
-          //                 color: Color(0xff4A5568),
-          //                 fontWeight: FontWeight.w400,
-          //               ),
-          //             ),
-          //           ),
-          //         ]),
-          //   ),
-          // ),
           Positioned(
             left: 0,
             right: 0,
@@ -330,26 +299,27 @@ class TabWidget extends StatelessWidget {
               children: [
                 RichText(
                   text: TextSpan(
-                      text: "1. ",
-                      style: GoogleFonts.lato(
-                        textStyle: const TextStyle(
-                          fontSize: 80,
-                          color: Color(0xff718096),
-                          fontWeight: FontWeight.w500,
-                        ),
+                    text: "1. ",
+                    style: GoogleFonts.lato(
+                      textStyle: const TextStyle(
+                        fontSize: 80,
+                        color: Color(0xff718096),
+                        fontWeight: FontWeight.w500,
                       ),
-                      children: <TextSpan>[
-                        TextSpan(
-                          text: textOne,
-                          style: GoogleFonts.lato(
-                            textStyle: const TextStyle(
-                              fontSize: 18,
-                              color: Color(0xff4A5568),
-                              fontWeight: FontWeight.w400,
-                            ),
+                    ),
+                    children: <TextSpan>[
+                      TextSpan(
+                        text: textOne,
+                        style: GoogleFonts.lato(
+                          textStyle: const TextStyle(
+                            fontSize: 18,
+                            color: Color(0xff4A5568),
+                            fontWeight: FontWeight.w400,
                           ),
                         ),
-                      ]),
+                      ),
+                    ],
+                  ),
                 ),
                 Padding(
                   padding: const EdgeInsets.only(left: 32.0),
@@ -370,71 +340,97 @@ class TabWidget extends StatelessWidget {
             ),
           ),
           Positioned(
-            left: uiUtils.getWidth() * 0.45,
+            left: 0,
             right: 0,
-            top: uiUtils.getHeight() * 0.62,
-            child: RichText(
-              text: TextSpan(
-                  text: "2. ",
-                  style: GoogleFonts.lato(
-                    textStyle: const TextStyle(
-                      fontSize: 80,
-                      color: Color(0xff718096),
-                      fontWeight: FontWeight.w500,
-                    ),
-                  ),
-                  children: <TextSpan>[
-                    TextSpan(
-                      text: textTwo,
-                      style: GoogleFonts.lato(
-                        textStyle: const TextStyle(
-                          fontSize: 18,
-                          color: Color(0xff4A5568),
-                          fontWeight: FontWeight.w400,
-                        ),
-                      ),
-                    ),
-                  ]),
-            ),
-          ),
-          Positioned(
-            left: uiUtils.getWidth() * 0.25,
             top: uiUtils.getHeight() * 0.57,
-            child: SvgPicture.asset(assetTwo),
-          ),
-          Positioned(
-            left: uiUtils.getWidth() * 0.23,
-            right: 0,
-            top: uiUtils.getHeight() * 0.9,
-            child: RichText(
-              text: TextSpan(
-                  text: "3. ",
-                  style: GoogleFonts.lato(
-                    textStyle: const TextStyle(
-                      fontSize: 80,
-                      color: Color(0xff718096),
-                      fontWeight: FontWeight.w500,
-                    ),
-                  ),
-                  children: <TextSpan>[
-                    TextSpan(
-                      text: textThree,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                SvgPicture.asset(assetTwo),
+                Padding(
+                  padding: const EdgeInsets.only(left: 64.0),
+                  child: RichText(
+                    text: TextSpan(
+                      text: "2. ",
                       style: GoogleFonts.lato(
                         textStyle: const TextStyle(
-                          fontSize: 18,
-                          color: Color(0xff4A5568),
-                          fontWeight: FontWeight.w400,
+                          fontSize: 80,
+                          color: Color(0xff718096),
+                          fontWeight: FontWeight.w500,
                         ),
                       ),
+                      children: <TextSpan>[
+                        TextSpan(
+                          text: textTwo,
+                          style: GoogleFonts.lato(
+                            textStyle: const TextStyle(
+                              fontSize: 18,
+                              color: Color(0xff4A5568),
+                              fontWeight: FontWeight.w400,
+                            ),
+                          ),
+                        ),
+                      ],
                     ),
-                  ]),
+                  ),
+                ),
+              ],
             ),
           ),
           Positioned(
-            left: uiUtils.getWidth() * 0.25,
+            left: 0,
             right: 0,
             top: uiUtils.getHeight() * 0.9,
-            child: SvgPicture.asset(assetThree),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                RichText(
+                  text: TextSpan(
+                    text: "3. ",
+                    style: GoogleFonts.lato(
+                      textStyle: const TextStyle(
+                        fontSize: 80,
+                        color: Color(0xff718096),
+                        fontWeight: FontWeight.w500,
+                      ),
+                    ),
+                    children: <TextSpan>[
+                      TextSpan(
+                        text: textThree,
+                        style: GoogleFonts.lato(
+                          textStyle: const TextStyle(
+                            fontSize: 18,
+                            color: Color(0xff4A5568),
+                            fontWeight: FontWeight.w400,
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                SvgPicture.asset(assetThree),
+              ],
+            ),
+          ),
+          Positioned(
+            left: 0,
+            right: 0,
+            top: uiUtils.getHeight() * 0.30,
+            child: SvgPicture.asset(
+              AppAssets.arrow_1,
+              width: uiUtils.getWidth() * 0.10,
+              height: uiUtils.getHeight() * 0.30,
+            ),
+          ),
+          Positioned(
+            left: 0,
+            right: 0,
+            top: uiUtils.getHeight() * 0.72,
+            child: SvgPicture.asset(
+              AppAssets.arrow_2,
+              width: uiUtils.getWidth() * 0.10,
+              height: uiUtils.getHeight() * 0.25,
+            ),
           ),
         ],
       ),

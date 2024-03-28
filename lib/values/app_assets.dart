@@ -16,4 +16,6 @@ class AppAssets {
       "assets/images/undraw_job_offers_kw5d.svg";
   static const String undraw_business_deal_cpi9 =
       "assets/images/undraw_business_deal_cpi9.svg";
+  static const String arrow_1 = "assets/images/arrow_1.svg";
+  static const String arrow_2 = "assets/images/arrow_2.svg";
 }
