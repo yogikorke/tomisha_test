@@ -98,12 +98,24 @@
             "request": "launch",
             "program": "lib/main.dart",
             "console": "debugConsole",
-            "flutterMode": "release",
+            "flutterMode": "debug",
             "args": [
                 "-d",
                 "Edge",
                 "--web-renderer",
                 "canvaskit"
+            ]
+        },
+        {
+            "name": "Windows App",
+            "type": "dart",
+            "request": "launch",
+            "program": "lib/main.dart",
+            "console": "debugConsole",
+            "flutterMode": "debug",
+            "args": [
+                "-d",
+                "windows"
             ]
         }
     ]

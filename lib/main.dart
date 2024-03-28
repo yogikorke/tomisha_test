@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:tomisha_test/pages/home_landscape.dart';
 import 'package:tomisha_test/pages/home_portrait.dart';
+import 'package:tomisha_test/utils/ui_utils.dart';
 
 void main() {
   runApp(const MyApp());
@@ -17,11 +19,15 @@ class MyApp extends StatelessWidget {
       statusBarIconBrightness: Brightness.light, // Status Bar icons' color
     ));
 
+    UiUtils uiUtils = UiUtils(context);
+
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'Tomisha Work',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(primarySwatch: Colors.blue),
-      home: const HomePage(title: 'Tomisha Work'),
+      home: uiUtils.getHeight() > uiUtils.getWidth()
+          ? const HomePagePortrait(title: 'Tomisha Work')
+          : const HomePageLandscape(title: 'Tomisha Work'),
     );
   }
 }

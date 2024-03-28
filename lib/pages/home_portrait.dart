@@ -1,24 +1,25 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:tomisha_test/utils/ui_utils.dart';
 import 'package:tomisha_test/values/app_assets.dart';
 
-class HomePage extends StatefulWidget {
-  const HomePage({super.key, required this.title});
+class HomePagePortrait extends StatefulWidget {
+  const HomePagePortrait({super.key, required this.title});
 
   final String title;
 
   @override
-  State<HomePage> createState() => _HomePageState();
+  State<HomePagePortrait> createState() => _HomePagePortraitState();
 }
 
-class _HomePageState extends State<HomePage> {
+class _HomePagePortraitState extends State<HomePagePortrait> {
   // Set the Status Bar color and the icon brightness
 
   @override
   Widget build(BuildContext context) {
+    UiUtils uiUtils = UiUtils(context);
+
     return SafeArea(
       child: Scaffold(
         appBar: PreferredSize(
@@ -79,7 +80,7 @@ class _HomePageState extends State<HomePage> {
             Container(
               margin: EdgeInsets.zero,
               padding: EdgeInsets.zero,
-              height: MediaQuery.sizeOf(context).height * 0.80,
+              height: uiUtils.getHeight() * 0.80,
               color: Colors.white,
               child: Column(
                 children: [
@@ -106,9 +107,9 @@ class _HomePageState extends State<HomePage> {
                     ),
                   ),
                   ClipPath(
-                    clipper: CustomClipPath(),
+                    clipper: CustomClipPathOne(),
                     child: Container(
-                      height: MediaQuery.sizeOf(context).height * 0.10,
+                      height: uiUtils.getHeight() * 0.10,
                       color: const Color(0xffE6FFFA),
                     ),
                   )
@@ -136,73 +137,40 @@ class _HomePageState extends State<HomePage> {
                     ],
                   ),
                   SizedBox(
-                    height: MediaQuery.of(context).size.height,
-                    child: TabBarView(
+                    height: MediaQuery.of(context).size.height * 1.4,
+                    child: const TabBarView(
                       children: [
-                        Padding(
-                          padding: const EdgeInsets.only(top: 32.0),
-                          child: Stack(
-                            children: [
-                              Positioned(
-                                left: 0,
-                                right: 0,
-                                child: Text(
-                                  "Drei einfache Schritte \nzu deinem neuen Job",
-                                  textAlign: TextAlign.center,
-                                  style: GoogleFonts.lato(
-                                    textStyle: const TextStyle(
-                                      fontSize: 21,
-                                      color: Color(0xff4A5568),
-                                      fontWeight: FontWeight.w500,
-                                    ),
-                                  ),
-                                ),
-                              ),
-                              Positioned(
-                                left: 0,
-                                right: 0,
-                                top: 64,
-                                child: SvgPicture.asset(
-                                  AppAssets.undraw_Profile_data_re_v81r,
-                                ),
-                              ),
-                              Positioned(
-                                left: 8,
-                                top: 128,
-                                child: Text(
-                                  "1. ",
-                                  style: GoogleFonts.lato(
-                                    textStyle: const TextStyle(
-                                      fontSize: 130,
-                                      color: Color(0xff718096),
-                                      fontWeight: FontWeight.w500,
-                                    ),
-                                  ),
-                                ),
-                              ),
-                              Positioned(
-                                right: 64,
-                                top: 256,
-                                child: Text(
-                                  "Erstellen dein Lebenslauf",
-                                  style: GoogleFonts.lato(
-                                    textStyle: const TextStyle(
-                                      fontSize: 15.75,
-                                      color: Color(0xff4A5568),
-                                      fontWeight: FontWeight.w400,
-                                    ),
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
+                        TabWidget(
+                          title: "Drei einfache Schritte \nzu deinem neuen Job",
+                          textOne: "Erstellen dein Lebenslauf",
+                          assetOne: AppAssets.undraw_Profile_data_re_v81r,
+                          textTwo: "Erstellen dein Lebenslauf",
+                          assetTwo: AppAssets.undraw_task_31wc,
+                          textThree: "Mit nur einem Klick\nbewerben",
+                          assetThree: AppAssets.undraw_personal_file_222m,
                         ),
-                        const Text(
-                          "Drei einfache Schritte zu deinem neuen Job",
+                        TabWidget(
+                          title:
+                              "Drei einfache Schritte \nzu deinem neuen Mitarbeiter",
+                          textOne: "Erstellen dein \nUnternehmensprofil",
+                          assetOne: AppAssets.undraw_Profile_data_re_v81r,
+                          textTwo: "Erstellen ein Jobinserat",
+                          assetTwo: AppAssets.undraw_about_me_wa29,
+                          textThree: "Wähle deinen \nneuen Mitarbeiter aus",
+                          assetThree: AppAssets.undraw_swipe_profiles1_i6mr,
                         ),
-                        const Text(
-                          "Drei einfache Schritte zu deinem neuen Job",
-                        )
+                        TabWidget(
+                          title:
+                              "Drei einfache Schritte \nzur Vermittlung neuer Mitarbeiter",
+                          textOne: "Erstellen dein \nUnternehmensprofil",
+                          assetOne: AppAssets.undraw_Profile_data_re_v81r,
+                          textTwo:
+                              "Erhalte Vermittlungs- \nangebot von Arbeitgeber",
+                          assetTwo: AppAssets.undraw_job_offers_kw5d,
+                          textThree:
+                              "Vermittlung nach \nProvision oder \nStundenlohn",
+                          assetThree: AppAssets.undraw_business_deal_cpi9,
+                        ),
                       ],
                     ),
                   ),
@@ -270,7 +238,166 @@ class _HomePageState extends State<HomePage> {
   }
 }
 
-class CustomClipPath extends CustomClipper<Path> {
+class TabWidget extends StatelessWidget {
+  final String title;
+  final String textOne, textTwo, textThree;
+  final String assetOne, assetTwo, assetThree;
+
+  const TabWidget({
+    super.key,
+    required this.title,
+    required this.textOne,
+    required this.textTwo,
+    required this.textThree,
+    required this.assetOne,
+    required this.assetTwo,
+    required this.assetThree,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    UiUtils uiUtils = UiUtils(context);
+    debugPrint("uiUtils.getHeight() : ${uiUtils.getHeight()}");
+
+    return Padding(
+      padding: const EdgeInsets.only(top: 32.0),
+      child: Stack(
+        children: [
+          Positioned(
+            left: 0,
+            right: 0,
+            child: Text(
+              title,
+              textAlign: TextAlign.center,
+              style: GoogleFonts.lato(
+                textStyle: const TextStyle(
+                  fontSize: 21,
+                  color: Color(0xff4A5568),
+                  fontWeight: FontWeight.w500,
+                ),
+              ),
+            ),
+          ),
+          Positioned(
+            left: 0,
+            right: 0,
+            top: uiUtils.getHeight() * 0.0819,
+            child: SvgPicture.asset(assetOne),
+          ),
+          Positioned(
+            left: 8,
+            top: uiUtils.getHeight() * 0.1638,
+            child: Text(
+              "1. ",
+              style: GoogleFonts.lato(
+                textStyle: const TextStyle(
+                  fontSize: 130,
+                  color: Color(0xff718096),
+                  fontWeight: FontWeight.w500,
+                ),
+              ),
+            ),
+          ),
+          Positioned(
+            right: 64,
+            top: uiUtils.getHeight() * 0.3276,
+            child: Text(
+              textOne,
+              style: GoogleFonts.lato(
+                textStyle: const TextStyle(
+                  fontSize: 15.75,
+                  color: Color(0xff4A5568),
+                  fontWeight: FontWeight.w400,
+                ),
+              ),
+            ),
+          ),
+          Positioned(
+            top: uiUtils.getHeight() * 0.2099,
+            child: ClipPath(
+              clipper: CustomClipPathTwo(),
+              child: Container(
+                width: uiUtils.getWidth(),
+                height: uiUtils.getHeight() * 0.90,
+                color: const Color(0xffE6FFFA),
+              ),
+            ),
+          ),
+          Positioned(
+            left: 32,
+            top: uiUtils.getHeight() * 0.3688,
+            child: Text(
+              "2. ",
+              style: GoogleFonts.lato(
+                textStyle: const TextStyle(
+                  fontSize: 130,
+                  color: Color(0xff718096),
+                  fontWeight: FontWeight.w500,
+                ),
+              ),
+            ),
+          ),
+          Positioned(
+            right: 64,
+            top: uiUtils.getHeight() * 0.5278,
+            child: Text(
+              textTwo,
+              style: GoogleFonts.lato(
+                textStyle: const TextStyle(
+                  fontSize: 15.75,
+                  color: Color(0xff4A5568),
+                  fontWeight: FontWeight.w400,
+                ),
+              ),
+            ),
+          ),
+          Positioned(
+            left: 0,
+            right: 0,
+            top: uiUtils.getHeight() * 0.5941,
+            child: SvgPicture.asset(assetTwo),
+          ),
+          Positioned(
+            left: 64,
+            top: uiUtils.getHeight() * 0.7887,
+            child: Text(
+              "3. ",
+              style: GoogleFonts.lato(
+                textStyle: const TextStyle(
+                  fontSize: 130,
+                  color: Color(0xff718096),
+                  fontWeight: FontWeight.w500,
+                ),
+              ),
+            ),
+          ),
+          Positioned(
+            right: 64,
+            top: uiUtils.getHeight() * 0.8643,
+            child: Text(
+              textThree,
+              style: GoogleFonts.lato(
+                textStyle: const TextStyle(
+                  fontSize: 15.75,
+                  color: Color(0xff4A5568),
+                  fontWeight: FontWeight.w400,
+                ),
+              ),
+            ),
+          ),
+          Positioned(
+            left: 0,
+            right: 0,
+            top: uiUtils.getHeight() * 1.0243,
+            child: SvgPicture.asset(assetThree),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class CustomClipPathOne extends CustomClipper<Path> {
   @override
   Path getClip(Size size) {
     Path path_0 = Path();
@@ -287,6 +414,64 @@ class CustomClipPath extends CustomClipper<Path> {
     path_0.lineTo(size.width * 0.9965222, size.height * -0.0050400);
     path_0.lineTo(size.width * 0.5034778, size.height * -0.0002600);
     path_0.lineTo(size.width * 0.0009667, size.height * -0.0038200);
+    path_0.close();
+
+    return path_0;
+  }
+
+  @override
+  bool shouldReclip(covariant CustomClipper<Path> oldClipper) {
+    return false;
+  }
+}
+
+class CustomClipPathTwo extends CustomClipper<Path> {
+  @override
+  Path getClip(Size size) {
+    Path path_0 = Path();
+    path_0.moveTo(size.width * -0.0016000, size.height * 0.2025200);
+    path_0.cubicTo(
+        size.width * -0.0023833,
+        size.height * 0.6591050,
+        size.width * -0.0023833,
+        size.height * 0.6591050,
+        size.width * -0.0026444,
+        size.height * 0.8113000);
+    path_0.cubicTo(
+        size.width * 0.1255333,
+        size.height * 0.6954800,
+        size.width * 0.3357333,
+        size.height * 0.6791000,
+        size.width * 0.4460111,
+        size.height * 0.6960400);
+    path_0.cubicTo(
+        size.width * 0.5732889,
+        size.height * 0.6904600,
+        size.width * 0.7801556,
+        size.height * 0.8041600,
+        size.width * 1.0028556,
+        size.height * 0.5855600);
+    path_0.cubicTo(
+        size.width * 1.0022333,
+        size.height * 0.4373200,
+        size.width * 1.0019139,
+        size.height * 0.2967800,
+        size.width * 1.0016000,
+        size.height * 0.2005200);
+    path_0.cubicTo(
+        size.width * 0.8449222,
+        size.height * 0.1236200,
+        size.width * 0.7685444,
+        size.height * 0.2619200,
+        size.width * 0.4941556,
+        size.height * 0.2680600);
+    path_0.cubicTo(
+        size.width * 0.1881556,
+        size.height * 0.2624200,
+        size.width * 0.2543889,
+        size.height * 0.2053400,
+        size.width * -0.0016000,
+        size.height * 0.2025200);
     path_0.close();
 
     return path_0;
